@@ -1,0 +1,94 @@
+{
+  "name": "notes",
+  "version": "0.5.2",
+  "private": true,
+  "author": "fjr",
+  "description": "notes便笺允许开启多个窗口方便在桌面端记录文字",
+  "main": "background.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/woshifjr/notes-book"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woshifjr/notes-book/issues",
+    "email": "2488548582@qq.com"
+  },
+  "scripts": {
+    "serve": "vue-cli-service electron:serve",
+    "build": "node script/deleteBuild && vue-cli-service electron:build",
+    "publish": "yarn build -p always",
+    "lint": "vue-cli-service lint",
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "commit": "yarn log && git add . && cz",
+    "cz": "cz"
+  },
+  "dependencies": {
+    "conventional-changelog-cli": "^2.2.2",
+    "core-js": "^3.15.2",
+    "crypto-js": "^4.1.1",
+    "dayjs": "^1.10.6",
+    "electron-log": "^4.4.7",
+    "electron-updater": "^5.0.1",
+    "fs-extra": "^10.0.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5",
+    "sqlite3": "^5.0.2",
+    "style-resources-loader": "^1.4.1",
+    "vditor": "^3.9.0",
+    "vue": "3.2.26",
+    "vue-cli-plugin-electron-builder": "^2.1.1",
+    "vue-router": "^4.0.12"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.0.2",
+    "@types/sequelize": "^4.28.10",
+    "@types/sqlite3": "^3.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.2.26",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "cz-conventional-changelog": "3.3.0",
+    "electron": "11.5.0",
+    "electron-builder": "22.14.5",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-vue": "^7.1.0",
+    "less": "^3.0.4",
+    "less-loader": "^5.0.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
+    "typescript": "4.4.4",
+    "vue-cli-plugin-style-resources-loader": "~0.1.4"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "publish": [
+    "github"
+  ]
+}
